@@ -12,6 +12,7 @@ const CountersList = () => {
     ];
 
     const [counters, setCounters] = useState(initialState);
+    
     const handleDelete = (id) => {
         
         const newCounters =counters.filter(c=>c.id!==id)
@@ -19,7 +20,7 @@ const CountersList = () => {
     }
     const handleReset=()=>{
         setCounters(initialState)
-        console.log("handle reset")
+        
     }
 
     return (

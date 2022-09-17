@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Counter = (props) => {
 
@@ -14,9 +14,11 @@ const Counter = (props) => {
     };
 
     const handleIncrement = () => {
+        console.log("handleIncrement");
         // setValue((prevState) => prevState + 1);
     };
     const handleDecrement = () => {
+        console.log("handleDecrement");
         // setValue((prevState) => prevState - 1);
     };
 
