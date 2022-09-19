@@ -15,28 +15,25 @@ const CountersList = () => {
 
     const handleDelete = (id) => {
 
-        const newCounters = counters.filter(c => c.id !== id)
+        const newCounters = counters.filter((c) => c.id !== id)
         setCounters(newCounters);
     }
     const handleReset = () => {
-        setCounters(initialState)
+        setCounters(initialState);
+        console.log("handle reset");
     }
 
     const handleIncrement = (id) => {
-        const newValue = counters.map((item) => ({
-            ...item,
-            value: item.id === id ? item.value + 1 : item.value,
-        }));
-        setCounters(newValue);
-
+        const elementIndex = counters.findIndex((c) => c.id === id);
+        const newCounters = [...counters];
+        newCounters[elementIndex].value++;
+        setCounters(newCounters);
     };
-
     const handleDecrement = (id) => {
-        const newValue = counters.map((item) => ({
-            ...item,
-            value: item.id === id ? item.value - 1 : item.value,
-        }));
-        setCounters(newValue);
+        const elementIndex = counters.findIndex((c) => c.id === id);
+        const newCounters = [...counters];
+        newCounters[elementIndex].value--;
+        setCounters(newCounters);
     };
 
     return (
@@ -45,9 +42,9 @@ const CountersList = () => {
                 <Counter
                     key={count.id}
                     onDelete={handleDelete}
-                    {...count}
                     onIncrement={handleIncrement}
                     onDecrement={handleDecrement}
+                    {...count}
                 />
             ))}
             <button className="btn btn-primary btn-sm m-2" onClick={handleReset}>Сброс</button>
